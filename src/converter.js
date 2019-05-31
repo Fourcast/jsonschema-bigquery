@@ -140,7 +140,7 @@ converter._object = (name, node, mode) => {
     throw new Error(`'object' type properties must have an '"additionalProperties": false' property:\n${JSON.stringify(node, null, 2)}`)
   }
   const required_properties = node['required'] || []
-  const properties = node['properties']
+  const properties = node['properties'] || {}
 
   const fields = Object.keys(properties).map( key => {
     const required = required_properties.includes(key) ? 'REQUIRED' : 'NULLABLE'
